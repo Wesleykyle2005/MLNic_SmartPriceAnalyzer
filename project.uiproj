@@ -1,0 +1,6 @@
+{
+  "Name": "MLNic_SmartPriceAnalyzer",
+  "ProjectType": "Process",
+  "Description": "MercadoLibre Nicaragua Smart Price Analyzer",
+  "MainFile": "Main.xaml"
+}
