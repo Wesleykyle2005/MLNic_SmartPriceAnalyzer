@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="DEwYC5KkLUi9OoqYS4e_rQ" Reference="xfvpy7_woEq5TX6-6WfEzQ/cdKRvqJ6WEaCfdhk5cF9jg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="listado.mercadolibre.com.ni/telefono" DesignTimeRectangle="343, 528, 208, 36" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='poly-component__title' tag='A' /&gt;" Guid="60a05227-39bf-42ae-9c13-ef3c6687ba11" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Telefono | MercadoLibre.com.ni' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="None" />
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

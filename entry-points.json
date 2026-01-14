@@ -4,6 +4,37 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "39a6a71e-9953-44ff-ab7a-5dd5603fba67",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "UiPathEventConnector": {
+            "type": "string"
+          },
+          "UiPathEvent": {
+            "type": "string"
+          },
+          "UiPathEventObjectType": {
+            "type": "string"
+          },
+          "UiPathEventObjectId": {
+            "type": "string"
+          },
+          "UiPathAdditionalEventData": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "filePath": "Workflows\\02_WebScraping.xaml",
+      "uniqueId": "a7dd5495-790b-4962-9522-3011fc69d56a",
+      "type": "process"
+    },
+    {
+      "filePath": "Workflows\\03_DataCleaning.xaml",
+      "uniqueId": "9ebd6a07-1ef7-4647-b590-c8fe337af408",
       "type": "process"
     }
   ]

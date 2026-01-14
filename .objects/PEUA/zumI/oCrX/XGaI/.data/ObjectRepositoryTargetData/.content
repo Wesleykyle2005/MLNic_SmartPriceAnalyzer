@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="QwFzExImLUSsrVeTdgILGw" Reference="xfvpy7_woEq5TX6-6WfEzQ/XGaI8ZqyjU2ZbMTiU5iJrQ" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="listado.mercadolibre.com.ni/telefono" DesignTimeRectangle="599, 528, 208, 18" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl class='poly-component__title' tag='A' type='' matching:class='fuzzy' fuzzylevel:class='0.0' /&gt;" Guid="4bdeca5f-b9ab-4cdb-910c-85279bdb928e" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Telefono | MercadoLibre.com.ni' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="583, 272, 240, 240" ElementType="Icon" FullSelectorArgument="&lt;webctrl aaname='Samsung Galaxy S23 Ultra' class='poly-component__picture' tag='IMG' /&gt;" Guid="edef6db1-7d43-4810-b444-84acdefcaeb9" SearchSteps="Selector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="2256e7065d5353c9a53fddf017f9f613.png" xmlns="">0qJOejxhiP0eKMpzkZsL4mA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="rXDXW7-G8kG0idVAQB5jgA" Reference="xfvpy7_woEq5TX6-6WfEzQ/EBEryLeXmEC9CnmMKg0emg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="listado.mercadolibre.com.ni/telefono" DesignTimeRectangle="634, 554, 71, 30" ElementType="Text" ElementVisibilityArgument="Interactive" FuzzySelectorArgument="&lt;webctrl class='andes-money-amount__fraction' tag='SPAN' /&gt;" Guid="21f25785-b4f9-4529-9b7a-0c8098b22e33" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Telefono | MercadoLibre.com.ni' /&gt;" SearchSteps="FuzzySelector" Version="V6" WaitForReadyArgument="None">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="1">
+          <Target DesignTimeRectangle="84, 95, 1200, 100" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='nav-bounds' aaname='' matching:class='fuzzy' fuzzylevel:class='0.0' matching:aaname='fuzzy' fuzzylevel:aaname='0.0' check:innerText='Saltar a&amp;#xA;Saltar el contenido&amp;#xA;Comentar sobre accesibilidad&amp;#xA;Métodos abreviados de teclado&amp;#xA;Buscar&amp;#xA;/&amp;#xA;Mis compras&amp;#xA;P&amp;#xA;Carrito&amp;#xA;C&amp;#xA;Saltar a filtros y resultados&amp;#xA;F&amp;#xA;Abrir/cerrar el menú de métodos abreviados&amp;#xA;Z&amp;#xA;Para moverte entre elementos, usa las flechas arriba o abajo del teclado.&amp;#xA;Mercado Libre Nicaragua - Donde comprar y vender de todo&amp;#xA;Ingresa lo que quieras encontrar&amp;#xA;en todo Mercado Libre&amp;#xA;Categorías&amp;#xA;Historial&amp;#xA;Vende gratis&amp;#xA;Ayuda&amp;#xA;Crea tu cuenta&amp;#xA;Ingresa&amp;#xA;Mis compras' /&gt;" Guid="98bb1690-4e1b-4cde-9685-09142b38f6e8" SearchSteps="FuzzySelector" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

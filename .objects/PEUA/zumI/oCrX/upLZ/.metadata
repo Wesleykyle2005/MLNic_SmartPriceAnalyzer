@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Vivo X100 Ultra 6.78 20…",
+  "Type": "Element",
+  "Id": "upLZ3OgSF0WUchwMezfWPQ",
+  "Reference": "xfvpy7_woEq5TX6-6WfEzQ/upLZ3OgSF0WUchwMezfWPQ",
+  "ParentRef": "xfvpy7_woEq5TX6-6WfEzQ/oCrXxOtAGUSr44xM5aMY0A",
+  "Created": "2026-01-11T16:37:43.1947568Z",
+  "Updated": "2026-01-11T16:37:43.1947568Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.22.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -4,7 +4,9 @@
   "description": "MercadoLibre Nicaragua Smart Price Analyzer",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "[25.10.4]"
+    "UiPath.Excel.Activities": "[3.3.1]",
+    "UiPath.System.Activities": "[25.10.4]",
+    "UiPath.UIAutomation.Activities": "[25.10.22]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -46,6 +48,18 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "39a6a71e-9953-44ff-ab7a-5dd5603fba67",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Workflows\\02_WebScraping.xaml",
+      "uniqueId": "a7dd5495-790b-4962-9522-3011fc69d56a",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Workflows\\03_DataCleaning.xaml",
+      "uniqueId": "9ebd6a07-1ef7-4647-b590-c8fe337af408",
       "input": [],
       "output": []
     }

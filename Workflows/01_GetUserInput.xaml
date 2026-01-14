@@ -23,8 +23,6 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>GlobalVariablesNamespace</x:String>
-      <x:String>GlobalConstantsNamespace</x:String>
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>Microsoft</x:String>
       <x:String>Microsoft.Win32.SafeHandles</x:String>
@@ -106,6 +104,8 @@
       <x:String>System.Net.NetworkInformation</x:String>
       <x:String>System.Net.Security</x:String>
       <x:String>System.Net.Sockets</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -212,9 +212,10 @@
       <AssemblyReference>System.Net.Ping</AssemblyReference>
       <AssemblyReference>System.Net.Sockets</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow is the first step of the process. Its purpose is to prompt the user for the name of the product they want to analyze on MercadoLibre.&#xD;&#xA;&#xD;&#xA;Functionalities:&#xD;&#xA;&#xD;&#xA;1. Displays an input dialog to capture the search term.&#xD;&#xA;2. Validates that the entered term is not null or empty.&#xD;&#xA;3. If the input is invalid, notifies the user with an error message.&#xD;&#xA;4. If the input is valid, normalizes it (converts it to lowercase) and prepares it to be used in the next workflow.&#xD;&#xA;&#xD;&#xA;Output variable:&#xD;&#xA;&#xD;&#xA;strSearchTerm (String): The cleaned search term, ready for use." DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="711,1096" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow is the first step of the process. Its purpose is to prompt the user for the name of the product they want to analyze on MercadoLibre.&#xA;&#xA;Functionalities:&#xA;&#xA;1. Displays an input dialog to capture the search term.&#xA;2. Validates that the entered term is not null or empty.&#xA;3. If the input is invalid, notifies the user with an error message.&#xA;4. If the input is valid, normalizes it (converts it to lowercase) and prepares it to be used in the next workflow.&#xA;&#xA;Output variable:&#xA;&#xA;strSearchTerm (String): The cleaned search term, ready for use." DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="658,1096" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSearchTerm" />
     </Sequence.Variables>
@@ -251,12 +252,12 @@
         </Sequence>
       </If.Else>
     </If>
-    <Assign DisplayName="Assign the trimmed and lowercased value of the search term to the search term variable." sap:VirtualizedContainerService.HintSize="455,166" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign the lowercased value of the search term to the search term variable." sap:VirtualizedContainerService.HintSize="455,166" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[strSearchTerm]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[strFullURL]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[strSearchTerm.Trim().ToLower()]</InArgument>
+        <InArgument x:TypeArguments="x:String">[GlobalVariablesNamespace.GlobalVariables.strURL + strSearchTerm.ToLower()]</InArgument>
       </Assign.Value>
     </Assign>
   </Sequence>

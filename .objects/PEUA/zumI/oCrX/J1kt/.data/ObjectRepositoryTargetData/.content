@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="3S8Fak1brkS_plPUgUtYtw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="listado.mercadolibre.com.ni/dell" DesignTimeRectangle="343, 528, 208, 36" ElementType="Text" ElementVisibilityArgument="Interactive" FullSelectorArgument="&lt;webctrl class='poly-component__title' tag='A' /&gt;" Guid="cc9d2a1d-74c9-496e-b249-b394ae2bdb40" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Dell | MercadoLibre.com.ni' /&gt;" SearchSteps="Selector" Version="V6" WaitForReadyArgument="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="b86d81c814e159f4c1996ae6128a0279.png" xmlns="">0Xaom7Cwbm0WWr8D9Rncm3w</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">GetText</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

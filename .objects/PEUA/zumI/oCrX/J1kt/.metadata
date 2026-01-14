@@ -1,0 +1,14 @@
+﻿{
+  "Name": "Dell Xps 13 9305 13.3 L…(1)",
+  "Type": "Element",
+  "TaxonomyType": "Label",
+  "Id": "J1ktxRhra0WdEysIRLWWJg",
+  "Reference": "xfvpy7_woEq5TX6-6WfEzQ/J1ktxRhra0WdEysIRLWWJg",
+  "ParentRef": "xfvpy7_woEq5TX6-6WfEzQ/oCrXxOtAGUSr44xM5aMY0A",
+  "Created": "2026-01-11T17:19:40.7493447Z",
+  "Updated": "2026-01-11T17:19:40.7493447Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.22.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
