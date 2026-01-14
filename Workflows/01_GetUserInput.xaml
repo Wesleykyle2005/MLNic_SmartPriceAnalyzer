@@ -215,7 +215,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow is the first step of the process. Its purpose is to prompt the user for the name of the product they want to analyze on MercadoLibre.&#xA;&#xA;Functionalities:&#xA;&#xA;1. Displays an input dialog to capture the search term.&#xA;2. Validates that the entered term is not null or empty.&#xA;3. If the input is invalid, notifies the user with an error message.&#xA;4. If the input is valid, normalizes it (converts it to lowercase) and prepares it to be used in the next workflow.&#xA;&#xA;Output variable:&#xA;&#xA;strSearchTerm (String): The cleaned search term, ready for use." DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="658,1096" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="580,1050" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSearchTerm" />
     </Sequence.Variables>
