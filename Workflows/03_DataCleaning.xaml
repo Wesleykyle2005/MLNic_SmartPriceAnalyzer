@@ -316,7 +316,7 @@
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Registrar los detalles del error capturado." sap:VirtualizedContainerService.HintSize="452,170" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[String.Format(&quot;Error capturado: {0} en {1}&quot;, exception.Message, exception.Source)]" />
+              <ui:LogMessage DisplayName="Registrar los detalles del error capturado." sap:VirtualizedContainerService.HintSize="452,170" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[String.Format(&quot;Error captured: {0} in {1}&quot;, exception.Message, exception.Source)]" />
             </Sequence>
           </ActivityAction>
         </Catch>

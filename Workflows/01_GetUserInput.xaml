@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_01_GetUserInput" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="_01_GetUserInput_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_01_GetUserInput" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="_01_GetUserInput_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -213,9 +213,16 @@
       <AssemblyReference>System.Net.Sockets</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="580,1050" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="_01_GetUserInput" sap:VirtualizedContainerService.HintSize="580,2304" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strSearchTerm" />
     </Sequence.Variables>
@@ -225,40 +232,114 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Display an input dialog to prompt the user for a product search term." sap:VirtualizedContainerService.HintSize="455,275" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="¿Qué producto deseas buscar?" Title="MercadoLibre Price Analyzer" TopMost="False">
-      <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:String">[strSearchTerm]</OutArgument>
-      </ui:InputDialog.Result>
-    </ui:InputDialog>
-    <If Condition="[String.IsNullOrEmpty(strSearchTerm)]" DisplayName="Check if the entered search term is empty or contains only whitespace." sap:VirtualizedContainerService.HintSize="455,555" sap2010:WorkflowViewState.IdRef="If_1">
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="453,182" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <TryCatch DisplayName="Get product search term" sap:VirtualizedContainerService.HintSize="524,2250" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="522,1753" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Error" DisplayName="Display an error message to the user." sap:VirtualizedContainerService.HintSize="419,118" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Error: Ingresa un producto&quot;]" />
+          <ui:RetryScope LogRetriedExceptions="{x:Null}" RetriedExceptionsLogLevel="{x:Null}" ContinueOnError="False" DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="488,960" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:01">
+            <ui:RetryScope.ActivityBody>
+              <ActivityAction>
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="486,749" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Display an input dialog to prompt the user for a product search term." sap:VirtualizedContainerService.HintSize="452,279" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="What product do you want to search for?" Title="MercadoLibre Price Analyzer" TopMost="False">
+                    <ui:InputDialog.Result>
+                      <OutArgument x:TypeArguments="x:String">[strSearchTerm]</OutArgument>
+                    </ui:InputDialog.Result>
+                  </ui:InputDialog>
+                  <If Condition="[String.IsNullOrWhiteSpace(strSearchTerm)]" sap:VirtualizedContainerService.HintSize="452,406" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If.Then>
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,178" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw Exception="[New Exception(&quot;Field empty&quot;)]" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:RetryScope.ActivityBody>
+            <ui:RetryScope.Condition>
+              <ActivityFunc x:TypeArguments="x:Boolean" />
+            </ui:RetryScope.Condition>
+          </ui:RetryScope>
+          <If Condition="[String.IsNullOrEmpty(strSearchTerm)]" DisplayName="Check if the entered search term is empty or contains only whitespace." sap:VirtualizedContainerService.HintSize="488,559" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Then>
+              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="453,182" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Caption="Error" DisplayName="Display an error message to the user." sap:VirtualizedContainerService.HintSize="419,118" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Error: Ingresa un producto&quot;]" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="453,234" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log the entered search term." sap:VirtualizedContainerService.HintSize="419,170" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Search term: &quot; &amp; strSearchTerm.ToString()]" />
+              </Sequence>
+            </If.Else>
+          </If>
+          <Assign DisplayName="Assign the lowercased value of the search term to the search term variable." sap:VirtualizedContainerService.HintSize="488,170" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strFullURL]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[GlobalVariablesNamespace.GlobalVariables.strURL + strSearchTerm.ToLower()]</InArgument>
+            </Assign.Value>
+          </Assign>
         </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="453,234" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="522,234" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log the details of a captured error" sap:VirtualizedContainerService.HintSize="488,170" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;An error occurred: &quot; &amp; exception.Message]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="522,94" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log the entered search term." sap:VirtualizedContainerService.HintSize="419,170" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Search term: &quot; &amp; strSearchTerm.ToString()]" />
         </Sequence>
-      </If.Else>
-    </If>
-    <Assign DisplayName="Assign the lowercased value of the search term to the search term variable." sap:VirtualizedContainerService.HintSize="455,166" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[strFullURL]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[GlobalVariablesNamespace.GlobalVariables.strURL + strSearchTerm.ToLower()]</InArgument>
-      </Assign.Value>
-    </Assign>
+      </TryCatch.Finally>
+    </TryCatch>
   </Sequence>
 </Activity>

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="_04_StatisticalAnalysis" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="_04_StatisticalAnalysis_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="_04_StatisticalAnalysis" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="_04_StatisticalAnalysis_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -31,6 +31,7 @@
       <x:String>System.Reflection</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -85,62 +86,100 @@
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_04_StatisticalAnalysis" sap:VirtualizedContainerService.HintSize="580,1239" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_04_StatisticalAnalysis" sap:VirtualizedContainerService.HintSize="580,1688" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign minimum price from data table" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[dblMinPrice]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Min(Function(row) CDbl(row("Price").ToString()))]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign maximum price from data table" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_2">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[dblMaxPrice]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Max(Function(row) CDbl(row("Price").ToString()))]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign average price from data table" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_3">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Double">[dblAvgPrice]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Average(Function(row) CDbl(row("Price").ToString()))]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign total products from data table" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_4">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[intTotalProducts]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[dtRawProducts.RowCount]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign top 10 most expensive products to datatable" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_5">
-      <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataTable">[GlobalVariablesNamespace.GlobalVariables.dtExpensiveProducts]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataTable">[dtRawProducts.AsEnumerable().OrderByDescending(Function(row) CDbl(row("Price").ToString())).Take(10).CopyToDataTable()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign DisplayName="Assign top 10 most cheaper products" sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_6">
-      <Assign.To>
-        <OutArgument x:TypeArguments="sd:DataTable">[GlobalVariablesNamespace.GlobalVariables.dtCheaperProducts]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="sd:DataTable">[dtRawProducts.AsEnumerable().OrderBy(Function(row) CDbl(row("Price").ToString())).Take(10).CopyToDataTable()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,166" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;═══════════════════════════════════&quot; + &#xA;Environment.NewLine + &#xA;&quot;ANÁLISIS ESTADÍSTICO COMPLETADO&quot; + &#xA;Environment.NewLine + &#xA;&quot;═══════════════════════════════════&quot; + &#xA;Environment.NewLine + &#xA;&quot;Total de Productos: &quot; + GlobalVariablesNamespace.GlobalVariables.intTotalProducts.ToString() + &#xA;Environment.NewLine + &#xA;&quot;Precio Promedio: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblAvgPrice.ToString(&quot;F2&quot;) + &#xA;Environment.NewLine + &#xA;&quot;Precio Mínimo: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblMinPrice.ToString(&quot;F2&quot;) + &#xA;Environment.NewLine + &#xA;&quot;Precio Máximo: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblMaxPrice.ToString(&quot;F2&quot;) + &#xA;Environment.NewLine + &quot;═══════════════════════════════════&quot;]" />
+    <TryCatch DisplayName="Calculate and log price statistics" sap:VirtualizedContainerService.HintSize="452,1665" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="450,1308" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Assign minimum price from data table" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Double">[dblMinPrice]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Min(Function(row) CDbl(row("Price").ToString()))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign maximum price from data table" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Double">[dblMaxPrice]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Max(Function(row) CDbl(row("Price").ToString()))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign average price from data table" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Double">[dblAvgPrice]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Double">[dtRawProducts.AsEnumerable().Average(Function(row) CDbl(row("Price").ToString()))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign total products from data table" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[intTotalProducts]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">[dtRawProducts.RowCount]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign top 10 most expensive products to datatable" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[GlobalVariablesNamespace.GlobalVariables.dtExpensiveProducts]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[dtRawProducts.AsEnumerable().OrderByDescending(Function(row) CDbl(row("Price").ToString())).Take(10).CopyToDataTable()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign top 10 most cheaper products" sap:VirtualizedContainerService.HintSize="416,179" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[GlobalVariablesNamespace.GlobalVariables.dtCheaperProducts]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[dtRawProducts.AsEnumerable().OrderBy(Function(row) CDbl(row("Price").ToString())).Take(10).CopyToDataTable()]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,170" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;═══════════════════════════════════&quot; + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;ANÁLISIS ESTADÍSTICO COMPLETADO&quot; + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;═══════════════════════════════════&quot; + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;Total de Productos: &quot; + GlobalVariablesNamespace.GlobalVariables.intTotalProducts.ToString() + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;Precio Promedio: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblAvgPrice.ToString(&quot;F2&quot;) + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;Precio Mínimo: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblMinPrice.ToString(&quot;F2&quot;) + &#xD;&#xA;Environment.NewLine + &#xD;&#xA;&quot;Precio Máximo: C$ &quot; + GlobalVariablesNamespace.GlobalVariables.dblMaxPrice.ToString(&quot;F2&quot;) + &#xD;&#xA;Environment.NewLine + &quot;═══════════════════════════════════&quot;]" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </TryCatch.Finally>
+    </TryCatch>
   </Sequence>
 </Activity>
